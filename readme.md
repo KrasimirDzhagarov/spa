@@ -39,7 +39,10 @@ The project use laravel passport to authenticate.
  
  php artisan migrate
  
- php artisan db:seed  - this command will make one user administrator@gmail.com with password: admin123 and will fill crud table with fake data
+ php artisan db:seed 
+  
+  - this will create a user administrator@gmail.com with password  "admin123"
+  - this will insert 10 fake record to consumer table
  
  php artisan passport:install
      
