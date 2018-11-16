@@ -62647,7 +62647,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 if (result) {
                     _this2.isDisabled = true;
 
-                    _this2.add({ name: _this2.form.name, city: _this2.form.city, age: _this2.form.age }).then(function (_ref2) {
+                    _this2.add({ name: _this2.form.name, city: _this2.form.city, age: _this2.form.age, updated_at: new Date() }).then(function (_ref2) {
                         var data = _ref2.data;
 
 
@@ -62699,7 +62699,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 this.isEdit = true;
             }
         },
-        cancelEdit: function cancelEdit(field, consumer) {
+        cancelEdit: function cancelEdit(consumer, field) {
             consumer.edit[field] = false;
             consumer[field] = this.oldValue;
             consumer.updated_at = new Date();
@@ -62876,7 +62876,7 @@ var render = function() {
                                 attrs: { type: "button" },
                                 on: {
                                   click: function($event) {
-                                    _vm.cancelEdit("name", consumer)
+                                    _vm.cancelEdit(consumer, "name")
                                   }
                                 }
                               },
@@ -62956,7 +62956,7 @@ var render = function() {
                                 attrs: { type: "button" },
                                 on: {
                                   click: function($event) {
-                                    _vm.cancelEdit("age", consumer)
+                                    _vm.cancelEdit(consumer, "age")
                                   }
                                 }
                               },
@@ -63037,7 +63037,7 @@ var render = function() {
                                 attrs: { type: "button" },
                                 on: {
                                   click: function($event) {
-                                    _vm.cancelEdit("city", consumer)
+                                    _vm.cancelEdit(consumer, "city")
                                   }
                                 }
                               },

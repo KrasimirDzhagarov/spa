@@ -40,7 +40,7 @@
 
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="button" @click="updateConsumer(consumer , 'name')">ok </button>
-                                    <button class="btn btn-outline-secondary" type="button" @click="cancelEdit('name' , consumer)">x </button>
+                                    <button class="btn btn-outline-secondary" type="button" @click="cancelEdit(consumer , 'name')">x </button>
                                 </div>
                             </div>
                             <span class="text-danger">{{ errors.first('edit.name') }}</span>
@@ -53,7 +53,7 @@
                                 <input type="text" class="form-control"  v-model="consumer.age" v-validate="'required|between:14,99'" name="edit.age">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="button" @click="updateConsumer(consumer , 'age')">ok </button>
-                                    <button class="btn btn-outline-secondary" type="button" @click="cancelEdit('age' , consumer)">x </button>
+                                    <button class="btn btn-outline-secondary" type="button" @click="cancelEdit(consumer , 'age')">x </button>
                                 </div>
                             </div>
                             <span class="text-danger">{{ errors.first('edit.age') }}</span>
@@ -66,7 +66,7 @@
                                 <input type="text" class="form-control"  v-model="consumer.city" v-validate="'required|included:Sofia,Varna,Plovdiv'" name="edit.city">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="button" @click="updateConsumer(consumer , 'city')">ok </button>
-                                    <button class="btn btn-outline-secondary" type="button" @click="cancelEdit('city' , consumer)">x </button>
+                                    <button class="btn btn-outline-secondary" type="button" @click="cancelEdit(consumer , 'city' )">x </button>
                                 </div>
                             </div>
                             <span class="text-danger">{{ errors.first('edit.city') }}</span>
@@ -142,7 +142,6 @@
 
                 }
 
-
                 if(this.search !== this.prevSearch || this.selectOrder !== this.prevOrder)
                 {
 
@@ -196,7 +195,7 @@
                    if(result){
                        this.isDisabled = true;
 
-                       this.add({name: this.form.name , city : this.form.city , age: this.form.age }).then( ({data}) => {
+                       this.add({name: this.form.name , city : this.form.city , age: this.form.age , updated_at: new Date()}).then( ({data}) => {
 
                            let type = 'error';
 
@@ -263,7 +262,7 @@
                 }
 
             },
-            cancelEdit(field, consumer)
+            cancelEdit(consumer,field)
             {
                 consumer.edit[field] = false;
                 consumer[field] = this.oldValue;

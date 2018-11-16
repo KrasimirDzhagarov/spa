@@ -35,7 +35,7 @@ The project use laravel passport to authenticate.
  
  create .env file with db credentials
  
- php artisan generate:key
+ php artisan key:generate
  
  php artisan migrate
  
