@@ -27,7 +27,7 @@ The project use laravel passport to authenticate.
    
 ## Install
 
- git clone 
+ git clone https://github.com/KrasimirDzhagarov/spa.git
  
  npm install
  
